@@ -8,13 +8,13 @@ pipeline {
         stage('build') {
             steps {
                 echo "building ..."
-                echo "VERSION: ${parameters.VERSION}"
+                echo "VERSION: ${params.VERSION}"
             }
         }
         stage ('test') {
             when {
                 expression {
-                    param.executeTests
+                    params.executeTests
                 }
             }
             steps {
