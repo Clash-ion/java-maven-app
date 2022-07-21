@@ -8,7 +8,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "building ..."
-                echo "VERSION: ${param.VERSION}"
+                echo "VERSION: ${parameters.VERSION}"
             }
         }
         stage ('test') {
