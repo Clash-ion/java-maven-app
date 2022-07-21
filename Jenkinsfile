@@ -46,8 +46,8 @@ pipeline {
             steps {
                 script {
                     gv.deployApp()
-                    echo "Deployed to ${params.enviroment1}"
-                    echo "Deployed to ${params.enviroment2}"
+                    echo "Deployed to ${enviroment1}"
+                    echo "Deployed to ${enviroment2}"
                 }
             }
         }
