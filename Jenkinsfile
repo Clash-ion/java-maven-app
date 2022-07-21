@@ -2,19 +2,19 @@ pipeline {
     agent any
     parameters {
         choice(name: 'VERSION', description: 'Version of the project', choices: ['1.0', '1.1', '1.2'])
-        booleanParameters(name: 'executeTests', defaultValue: true, description: 'Execute tests')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'Execute tests')
     }
     stages {
         stage('build') {
             steps {
                 echo "building ..."
-                echo "VERSION: ${parameters.VERSION}"
+                echo "VERSION: ${param.VERSION}"
             }
         }
         stage ('test') {
             when {
                 expression {
-                    parameters.executeTests
+                    param.executeTests
                 }
             }
             steps {
