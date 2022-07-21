@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "deploying..."
                 withCredentials([
-                    usernamePassword(credentialsId : 'nexus-docker-repo', usernameVariable: USER, passwordVariable: PASS )
+                    usernamePassword(credentialsId : 'nexus-docker-repo', usernameVariable: 'USER', passwordVariable: 'PASS' )
                 ]) {
                     sh "echo ${USER} ${PASS}"
                 }
