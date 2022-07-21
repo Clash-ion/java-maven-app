@@ -16,12 +16,12 @@ pipeline {
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'docker-hub',
-                        username: 'docker-hub-username',
-                        password: 'docker-hub-password'
+                        usernameVariable: 'USER',
+                        passwordVariable: 'PASS'
                     )
                 ]) {
                     sh 'docker build -t  clashia/java-maven-app:jma-2.0 .'
-                    sh 'echo $docker-hub-password | docker login -u $docker-hub-username --password-stdin'
+                    sh 'echo $PASS | docker login -u $USER --password-stdin'
                     sh 'docker push clashia/java-maven-app:jma-2.0'
                 }
             }
