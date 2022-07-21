@@ -40,8 +40,6 @@ pipeline {
                 ok "Done"
                 parameters {
                     choice( name: 'environment1', description: 'Environment to deploy to', choices: ['dev', 'staging', 'prod'] )
-                }
-                parameters {
                     choice( name: 'environment2', description: 'Environment to deploy to', choices: ['dev', 'staging', 'prod'] )
                 }
             }
