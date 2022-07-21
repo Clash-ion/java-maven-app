@@ -1,13 +1,15 @@
 pipeline {
     agent any
-    environment {
-        NEW_VERSION = '1.0.0'
+    tools {
+        maven {
+            version "3.6.3"
+        }
     }
     stages {
         stage('build') {
             steps {
                 echo "building ..."
-                echo "building ${NEW_VERSION}"
+                sh "mvn --version"
             }
         }
         stage ('test') {
@@ -18,12 +20,6 @@ pipeline {
         stage ('deploy') {
             steps {
                 echo "deploying..."
-                withCredentials([
-                    usernamePassword(credentialsId : 'nexus-docker-repo', usernameVariable: 'USER', passwordVariable: 'PASS' )
-                ]) {
-                    sh "echo ${USER} ${PASS}"
-                }
-            }
         }
     }
 }
