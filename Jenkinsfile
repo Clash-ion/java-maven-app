@@ -43,7 +43,7 @@ pipeline {
         stage('increment git version') {
             steps {
                 script {
-                    echo 'incrementing git version ...'
+                    echo 'incrementing git version test ...'
                     gv.incrementGitVersion()
                 }
             }
