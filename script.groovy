@@ -39,7 +39,7 @@ def incrementGitVersion() {
             passwordVariable: 'PASS'
         )
     ]) {
-        sh "git remote add origin https://${USER}:${PASS}@github.com/Clash-ion/java-maven-app.git"
+        // sh "git remote add origin https://${USER}:${PASS}@github.com/Clash-ion/java-maven-app.git"
         sh 'git add .'
         sh 'git commit -m "ci : increment version"'
         sh 'git push origin HEAD:jenkins-job'
