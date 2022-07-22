@@ -1,4 +1,9 @@
-@Library('jenkins-shared-library')
+library idenifier: "jenkins-shared-library", retriever: modernSCM(
+    [$class: 'GitSCMSource',
+    remote: 'https://github.com/Clash-ion/jenkins-shared-library.git',
+    credentialsId: 'github-credentials']
+)
+
 def gv
 
 pipeline {
