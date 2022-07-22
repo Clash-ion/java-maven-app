@@ -31,4 +31,19 @@ def deployApp() {
     echo 'deploying...'
 }
 
+def incrementGitVersion() {
+    withCredentials([
+        usernamePassword(
+            credentialsId: 'github-credentials',
+            usernameVariable: 'USER',
+            passwordVariable: 'PASS'
+        )
+    ]) {
+        sh "git remote add origin https://${USER}:${PASS}@github.com/Clash-ion/java-maven-app.git"
+        sh 'git add .'
+        sh 'git commit -m "ci : increment version"'
+        sh 'git push origin HEAD:jenkins-job'
+    }
+}
+
 return this
