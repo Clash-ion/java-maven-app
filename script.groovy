@@ -1,5 +1,5 @@
 def deployApp() {
-    echo 'deploying...'
+    echo 'deploying the app...'
 }
 
 return this
