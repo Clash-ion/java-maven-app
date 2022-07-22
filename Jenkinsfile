@@ -40,5 +40,13 @@ pipeline {
                 echo 'deploying...'
             }
         }
+        stage('increment git version') {
+            steps {
+                script {
+                    echo 'incrementing git version ...'
+                    gv.incrementGitVersion()
+                }
+            }
+        }
     }
 }
