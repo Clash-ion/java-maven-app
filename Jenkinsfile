@@ -1,9 +1,9 @@
-library idenifier: "jenkins-shared-library", retriever: modernSCM(
+library idenifier: "jenkins-shared-library@master", retriever: modernSCM(
     [$class: 'GitSCMSource',
     remote: 'https://github.com/Clash-ion/jenkins-shared-library.git',
     credentialsId: 'github-credentials']
 )
-@Library('jenkins-shared-library')
+// @Library('jenkins-shared-library')
 
 def gv
 
