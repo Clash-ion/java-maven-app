@@ -24,7 +24,7 @@ pipeline {
         stage('build image') {
             steps {
                 script {
-                    makeImage()
+                    makeImage 'clashia/java-maven-app:jma-3.0'
                 }
             }
         }
