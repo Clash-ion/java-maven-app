@@ -34,7 +34,7 @@ def deployApp() {
 def incrementGitVersion() {
     withCredentials([
         usernamePassword(
-            credentialsId: 'github-credentials',
+            credentialsId: 'github-encoded-creds',
             usernameVariable: 'USER',
             passwordVariable: 'PASS'
         )
