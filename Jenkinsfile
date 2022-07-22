@@ -3,7 +3,7 @@ library idenifier: "jenkins-shared-library", retriever: modernSCM(
     remote: 'https://github.com/Clash-ion/jenkins-shared-library.git',
     credentialsId: 'github-credentials']
 )
-@library('jenkins-shared-library')
+@Library('jenkins-shared-library')
 
 def gv
 
