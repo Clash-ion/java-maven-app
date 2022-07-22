@@ -4,7 +4,7 @@ def makeJar() {
 }
 
 def makeImage() {
-    echo 'building image ...'
+    echo 'building image webhook trigger'
     withCredentials([
         usernamePassword(
             credentialsId: 'docker-hub',
