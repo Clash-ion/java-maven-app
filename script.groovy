@@ -1,6 +1,15 @@
+def incrementVersion() {
+    sh 'mvn build-helper:parse-version versions:set \
+        -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
+        versions:commit'
+        def matcher = readFile('pom.xml').matcher('<version>(.+)</version>')
+        def version = matcher[0][1]
+        env.IMAGE_NAME = "$version-$BUILD_NUMBER"
+}
+
 def makeJar() {
     echo 'building jar file ...'
-    sh 'mvn package'
+    sh 'mvn clean package'
 }
 
 def makeImage() {
@@ -12,9 +21,9 @@ def makeImage() {
             passwordVariable: 'PASS'
         )
     ]) {
-        sh 'docker build -t  clashia/java-maven-app:jma-2.0 .'
-        sh 'echo $PASS | docker login -u $USER --password-stdin'
-        sh 'docker push clashia/java-maven-app:jma-2.0'
+        sh "docker build -t  clashia/java-maven-app:${IMAGE_NAME} ."
+        sh "echo $PASS | docker login -u $USER --password-stdin"
+        sh "docker push clashia/java-maven-app:${IMAGE_NAME}"
     }
 } // end withCredentials
 
