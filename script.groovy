@@ -30,16 +30,17 @@ def makeImage() {
 def deployApp() {
     echo 'deploying...'
     def commands = [
-        // 'docker stop java-maven-app',
-        // 'docker rm java-maven-app',
+        'docker stop java-maven-app',
+        'docker rm java-maven-app',
         "docker pull clashia/java-maven-app:${IMAGE_NAME}",
         // from container port 8080 to container port 5000
         "docker run -d -p 5000:8080 --name java-maven-app clashia/java-maven-app:${IMAGE_NAME}"
     // "docker run -d --name java-maven-app -p 8080:8080 clashia/java-maven-app:${IMAGE_NAME}"
     ]
+    def dockrcmd = commands.join(' && ')
+
     sshagent(['ec2-server-key']) {
-        sh 'ssh -o StrictHostKeyChecking=no ec2-user@3.93.172.181 '
-        sh commands.join(' && ')
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.93.172.181 ${dockrcmd}"
     }
 }
 
