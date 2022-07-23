@@ -30,8 +30,8 @@ def makeImage() {
 def deployApp() {
     echo 'deploying...'
     def commands = [
-        'docker stop java-maven-app',
-        'docker rm java-maven-app',
+        // 'docker stop java-maven-app',
+        // 'docker rm java-maven-app',
         "docker pull clashia/java-maven-app:${IMAGE_NAME}",
         // from container port 8080 to container port 5000
         "docker run -d -p 5000:8080 --name java-maven-app clashia/java-maven-app:${IMAGE_NAME}"
