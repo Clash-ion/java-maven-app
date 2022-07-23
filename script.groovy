@@ -51,6 +51,7 @@ def incrementGitVersion() {
             passwordVariable: 'PASSWORD'
         )
     ]) {
+        sh "git pull origin ${env.BRANCH_NAME}"
         sh 'git config --global user.email "jenkins@jenkins.com"'
         sh 'git config --global user.name "Jenkins"'
         sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/Clash-ion/java-maven-app.git"
