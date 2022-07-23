@@ -18,42 +18,44 @@ pipeline {
                 script {
                     echo 'incrementing version ...'
                     gv.incrementVersion()
+                    sh 'printenv'
+                    // echo "{env.BRANCH_NAME}"
                 }
             }
         }
         stage('build jar') {
             steps {
                 script {
-                    gv.makeJar()
+                    // gv.makeJar()
                 }
             }
         }
         stage('build image') {
             steps {
                 script {
-                    gv.makeImage()
+                    // gv.makeImage()
                 }
             }
         }
-        stage('deploy') {
-            when {
-                expression {
-                    $BRANCH_NAME == 'main'
-                }
-            }
-            steps {
-                script {
-                    gv.deployApp()
-                }
-            }
-        }
-        stage('increment git version') {
-            steps {
-                script {
-                    echo 'incrementing git version test ...'
-                    gv.incrementGitVersion()
-                }
-            }
-        }
+        // stage('deploy') {
+        //     when {
+        //         expression {
+        //             $BRANCH_NAME == 'main'
+        //         }
+        //     }
+        //     steps {
+        //         script {
+        //             gv.deployApp()
+        //         }
+        //     }
+        // }
+        // stage('increment git version') {
+        //     steps {
+        //         script {
+        //             echo 'incrementing git version test ...'
+        //             gv.incrementGitVersion()
+        //         }
+        //     }
+        // }
     }
 }
