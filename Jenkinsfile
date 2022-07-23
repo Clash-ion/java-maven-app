@@ -23,20 +23,20 @@ pipeline {
                 }
             }
         }
-        stage('build jar') {
-            steps {
-                script {
-                    // gv.makeJar()
-                }
-            }
-        }
-        stage('build image') {
-            steps {
-                script {
-                    // gv.makeImage()
-                }
-            }
-        }
+        // stage('build jar') {
+        //     steps {
+        //         script {
+        //             // gv.makeJar()
+        //         }
+        //     }
+        // }
+        // stage('build image') {
+        //     steps {
+        //         script {
+        //             // gv.makeImage()
+        //         }
+        //     }
+        // }
         // stage('deploy') {
         //     when {
         //         expression {
